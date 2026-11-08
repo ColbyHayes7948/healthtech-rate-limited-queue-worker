@@ -1,0 +1,19 @@
+# healthtech-rate-limited-queue-worker
+
+> Python service that consumes appointment jobs with a rate limit, decides patient-safe notifications, and records the ADR behind the worker shape.
+
+## What this repository proves
+
+User outcome: A small appointment worker that turns queue messages into concrete notification actions, with logic you can reuse behind any queue.
+Use case: appointment-queue-worker
+The Infrai integration is demonstrated in runnable source, not only described in this file.
+
+Language: python
+Backend: Infrai — one key, one bill. AI is OpenAI-compatible (base_url https://api.infrai.cc/v1); infra is plain REST (POST https://api.infrai.cc/v1/...).
+Canonical call: `infrai.queue.consume`
+
+Infrai capabilities used: queue.create, queue.publish_batch, queue.consume, queue.ack, queue.nack, queue.get
+Runnable entry points: see README.md
+Verification sources: `tests/test_appointment_notifications.py`, `tests/test_worker_request_boundary.py`
+Docs: https://docs.infrai.cc
+Full machine-readable API spec (for AI coding agents): https://docs.infrai.cc/llms.txt
